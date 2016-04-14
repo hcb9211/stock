@@ -89,7 +89,7 @@
                 that.loadData(type);
             });
 
-            $('#table').on('swipeleft', function(e){
+            $('#table').on('swiperight', function(e){
                 e.preventDefault();
                 $('#tab a').removeClass('on');
                 $('#tab a').eq(0).addClass('on');
@@ -98,7 +98,7 @@
                 that.loadData(type);
             });
 
-            $('#table').on('swiperight', function(e){
+            $('#table').on('swipeleft', function(e){
                 e.preventDefault();
                 $('#tab a').removeClass('on');
                 $('#tab a').eq(1).addClass('on');
