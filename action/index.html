@@ -43,7 +43,7 @@
     <img src="images/pic2.png" width="100%" alt=""/>
     <img src="images/pic3.png" width="100%" alt=""/>
     <div class="btn-line">
-        <a href="http://kh.htsec.com/p/BFVQsN" class="btn"></a>
+        <a href="http://khmobile.htsec.com/p/BFVQsN" class="btn"></a>
     </div>
 </div>
 
@@ -59,7 +59,7 @@
     {{else}}
     <tr>
         <th>{{ i+1 }}</th>
-        <th>{{ value.phone }}</th>
+        <th>{{ value.starPhone }}</th>
         <th>{{ value.returns.toFixed(2) }}%</th>
     </tr>
     {{/if}}
@@ -70,6 +70,8 @@
 <script src="js/lib/zepto.min.js"></script>
 <script src="js/lib/template.js"></script>
 <script>
+
+
     var index = {
         cache : {},
         init : function(){
@@ -118,8 +120,12 @@
                     dataType : 'json',
                     success: function(data){
                         var result = {};
+                        $(data).each(function(i, t){
+                            console.log(t.phone);
+                            var phone = t.phone.toString().substring(0,3) + '****' + t.phone.toString().substring(7);
+                            data[i].starPhone = phone;
+                        })
                         result.list = data;
-                        console.log(data);
                         that.cache[type] = result;
                         that.render(result);
                     },
