@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="keywords" content="炒股,股票,庄股,手机炒股,学习炒股,怎么炒股,如何炒股" />
+    <meta name="description" content="深圳利讯互联网金融服务有限公司旗下的股票先机是一款用大数据分析庄家资金、精选上涨庄股的手机炒股软件。教您学习炒股、怎么炒股、如何炒股。" />
+    <title>股票先机-大数据跟庄手机炒股|深圳利讯互联网金融服务有限公司</title>
+    <link rel="stylesheet" type="text/css" href="css/global.css?v=1">
+</head>
+<body class="index">
+<div class="container">
+	<div class="header">
+		<div class="wrap clearfix">
+			<a href="index.html" class="logo"><img alt="股票先机" src="img/logo.png" /></a>
+			<ul class="nav">
+				<li class="nav-li"><a class="nav-a highlight" href="javascript:;">首页</a></li>
+				<li class="nav-li"><a class="nav-a" href="contact.html">联系我们</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="banner">
+		<div class="wrap">
+			<h1 class="title">股票先机</h1>
+			<p class="desc">史上最具深度股票资金分析</p>
+			<p class="desc">庄家行为大数据分析神器</p>
+			<div class="btn-line">
+				<a class="btn-iphone" href="javascript:;" id="btnIphone"></a>
+				<a class="btn-android" href="javascript:;" id="btnAndroid"></a>
+				<div class="banner-code"></div>  
+			</div>
+		</div>
+	</div>
+	<div class="section section1">
+		<div class="wrap clearfix">
+			<h2 class="title">用大数据帮你炒庄股</h2>
+			<p class="desc">大数据量化分析模型，精准捕捉庄家资金动向</p>
+		</div>
+	</div>
+	<div class="section section2">
+		<div class="wrap clearfix">
+			<h2 class="title">庄家操盘动态一键直播</h2>
+			<p class="desc">大数据实时监控，庄家买卖力度、持仓成本一目了然</p>
+		</div>
+	</div>
+	<div class="section section3">
+		<div class="wrap clearfix">
+			<h2 class="title">每日推荐三只必涨牛股</h2>
+			<p class="desc">精选强势庄股，历史荐股90%跑赢大盘</p>
+		</div>
+	</div>
+	<div class="section section4">
+		<div class="wrap clearfix">
+			<h2 class="title">高收益基金跟投</h2>
+			<p class="desc">大数据选股跟投，一个月收益跑赢大盘超过20%</p>
+		</div>
+	</div>
+	<div class="about">
+		<div class="wrap">
+			<h2 class="title">关于我们</h2>
+			<p class="desc">深圳市利讯互联网金融服务有限公司的创始人来自腾讯、花旗银行和21世纪经济报道，拥有专业的互联网大数据分析和投资服务能力。旗下产品股票先机是一款用大数据分析庄家资金、精选上涨庄股的手机炒股软件。基于互联网大数据，股票先机实时为用户提供个股资金详情、庄家手法分析、主力成本解密，以市场领先的大数据量化策略，每日为用户挑选庄家牛股，并提供高收益组合跟投服务。</p>
+		</div>
+	</div>
+	<div class="footer">
+		深圳市利讯互联网金融服务有限公司 <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备15042797号-1</a><br>Copyright &copy;2015 All rights reserved
+	</div>
+
+    <div class="webchat">
+        <img src="img/web_chat.png" width="154" alt=""/>
+        <a title="小先客服" target="_blank" class="qq" href="http://wpa.qq.com/msgrd?v=3&uin=3404724387&site=qq&menu=yes"><img
+                src="img/web_service_1.png" width="140" alt=""/></a>
+        <a title="小仙客服" target="_blank" class="qq" href="http://wpa.qq.com/msgrd?v=3&uin=2192710549&site=qq&menu=yes"><img
+                src="img/web_service_2.png" width="140" alt=""/></a>
+    </div>
+
+
+    <div class="layer js-click hide" id="layer" onclick="hide('layer')">
+        <div class="mask"></div>
+        <div class="code">
+            <div class="code-img">
+                <img src="img/android.png" width="270" height="270" alt=""/>
+                <p class="code-desc">Android 下载</p>
+            </div>
+            <div class="code-img">
+                <img src="img/android.png" width="270" height="270" alt=""/>
+                <p class="code-desc">Iphone 下载</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255983647'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255983647' type='text/javascript'%3E%3C/script%3E"));</script>
+<script type="text/javascript">
+function $(id){
+	return document.getElementById(id);
+}
+//判断是否微信访问
+function isWeiXin(){
+    var ua = window.navigator.userAgent.toLowerCase();
+    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+//下载微信
+function download(type){
+    var isWx = isWeiXin();
+    if(isWx){
+        location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.lixun.gpxj';
+    }else{
+        var u = navigator.userAgent;
+        //var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        if(u.indexOf('Android') > -1 || u.indexOf('Adr') > -1 || 'android' == type){   //android终端
+            location.href = 'http://www.gupiaoxianji.com/apk/gpxj-ifunbox.apk';
+        }else if(!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/) || 'ios' == type){   //ios终端
+            location.href = 'https://itunes.apple.com/us/app/gu-piao-xian-ji-mo-ni-gen/id1031837178?l=zh&ls=1&mt=8';
+        }else{  //PC 终端
+            //show('layer');
+        }
+    }
+}
+
+function hide(id){
+	$(id).className = $(id).className + ' hide';
+}
+
+function show(id){
+    var c = $(id).className;
+    if(c.indexOf('hide') > -1){
+        $(id).className = c.replace(/\s+hide/g, '');
+    }
+
+}
+
+
+$('btnIphone').onclick = function(){
+    download('ios');
+};
+$('btnAndroid').onclick = function(){
+    download('android');
+};
+
+</script>
+</body>
+</html>

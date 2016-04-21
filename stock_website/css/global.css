@@ -1,0 +1,92 @@
+/* ============================================================
+   样式重置
+   ============================================================ */
+
+body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,fieldset,legend,input,select,textarea,button,th,td,blockquote,address,pre{margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6,input,textarea,select,button,label{font-size:100%;vertical-align:middle;}
+ul,dl,ol{list-style:none;}
+img,fieldset{border:none;}
+img{display:inline-block;overflow:hidden;vertical-align:top;}
+em,address{font-style:normal;}
+sup,sub{vertical-align:baseline;}
+a{text-decoration:none;}
+table{border-collapse:collapse;border-spacing:0;}
+q:before{content:"";}
+q:after{content:"";}
+button{cursor:pointer;}
+textarea{word-wrap:break-word;resize:none;}  /*  word-wrap for opera, resize for webkit  */
+input::-ms-clear{display:none;}  /*  Remove X button in input for IE10  */
+/* HTML5 [[ */
+article,aside,dialog,figure,footer,header,hgroup,nav,section{display:block;}
+menu{margin:0;padding:0;}
+mark{background-color:transparent;}
+/* HTML5 ]] */
+html,body{height:100%;}
+body{background-color:#fff;color:#7A7B7F;font:14px/1.5 'Microsoft YaHei', Tahoma, Arial, \5b8b\4f53;}  /* \5b8b\4f53 : 宋体 */
+.clearfix{*zoom:1;}
+.clearfix:after{content: '.';display:block;visibility: hidden;height: 0;line-height: 0;clear: both;}
+.wrap{width:1170px;margin:0 auto;}
+.highlight{color:#ff7647!important;}
+.hide{display:none;}
+.header{padding:11px 0;}
+.header .nav{float:right;}
+.header .logo{float:left;}
+.header .nav-li{float:left;padding-left:50px;}
+.header .nav-a{float:left;font-size:18px;color:#7A7B7F;line-height:58px;}
+.section .title{font-size:34px;color:#ff4342;line-height:66px;}
+.section .desc{font-size:22px;}
+.footer{min-width:1170px;height:54px;padding-top:6px;line-height:22px;background:#e3e4e4;font-size:14px;text-align:center;}
+.footer a{color:#7A7B7F;}
+
+/* ============================================================
+   首页
+   ============================================================ */
+.index .banner{min-width:1170px;height:600px;background:#FF4033 url(../img/banner_01.png?v=1) center no-repeat;}
+.index .banner .title{font-size:36px;line-height:66px;color:#ffffff;}
+.index .banner .desc{font-size:32px;line-height:46px;color:#ffffff;}
+.index .banner .wrap{width:535px;padding:107px 0 0 635px;}
+.index .banner .btn-iphone{font-size:32px;color:#ffffff;}
+.index .banner .btn-line{position:relative;margin-top:40px;}
+.index .banner .btn-iphone{display:block;width:170px;height:60px;background:url(../img/btn_iphone.png) no-repeat;margin-bottom:20px;}
+.index .banner .btn-android{display:block;width:170px;height:60px;background:url(../img/btn_android.png) no-repeat;}
+.index .banner .banner-code{position:absolute;left:188px;top:0;width:140px;height:140px;background:url(../img/banner_code.png) no-repeat;}
+.index .section1{padding-top:48px;background-color:#f7f7f7;}
+.index .section1 .wrap{height:552px;background:url(../img/picture_01.png) right top no-repeat;}
+.index .section1 .title{padding:196px 0 0 70px;}
+.index .section2{padding-top:57px;background-color:#ffffff;text-align:right;}
+.index .section2 .wrap{height:543px;background:url(../img/picture_02.png) no-repeat;}
+.index .section2 .title{padding:185px 88px 0 0;}
+.index .section3{padding-top:75px;background-color:#f7f7f7;}
+.index .section3 .wrap{height:525px;background:url(../img/picture_03.png) right top no-repeat;}
+.index .section3 .title{padding:185px 0 0 15px;}
+.index .section4{padding-top:57px;background-color:#ffffff;text-align:right;}
+.index .section4 .wrap{height:543px;background:url(../img/picture_04.png) no-repeat;}
+.index .section4 .title{padding:185px 111px 0 0;}
+.index .about{min-width:1170px;padding:23px 0 34px;background-color:#f7f7f7;}
+.index .about .title{display:inline-block;*display:inline;*zoom:1;line-height:50px;font-size:18px;color:#ff4342;border-bottom:2px solid #ff4342;margin-bottom:25px;}
+.index .about .desc{font-size:16px;color:#202020;line-height:28px;}
+
+.webchat{position: fixed;right:61px;top:40%;width: 154px;}
+.webchat .qq{display:block;color: #fff;font-family: Arial;}
+
+.layer .mask{position: fixed;left:0;top:0;width: 100%;height: 100%;background: #000;opacity:0.5;filter:alpha(opacity=50);}
+.layer .code{position: fixed;left:50%;top:50%;margin: -165px 0 0 -378px;white-space: nowrap;}
+.layer .code-img{display: inline-block;*display:inline;*zoom:1;text-align: center;}
+.layer .code img{width: 270px;height: 270px;margin: 0 54px;}
+.layer .code-desc{font-size: 26px;color: #fff;line-height: 60px;}
+
+
+
+/* ============================================================
+   联系我们
+   ============================================================ */
+.contact .banner{min-width:1170px;height:400px;background:#ff7647 url(../img/banner_02.png) center no-repeat;}
+.contact .about{padding:23px 0 34px;}
+.contact .about .title{display:inline-block;*display:inline;*zoom:1;line-height:50px;font-size:18px;color:#ff7647;border-bottom:2px solid #ff7647;margin-bottom:25px;}
+.contact .about .desc{font-size:16px;line-height:32px;}
+.contact .code{padding:0 0 11px 44px;}
+.contact .code img{margin-right:73px;}
+
+
+
+
