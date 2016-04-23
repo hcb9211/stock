@@ -5,7 +5,7 @@
     <meta name="keywords" content="炒股,股票,庄股,手机炒股,学习炒股,怎么炒股,如何炒股" />
     <meta name="description" content="深圳利讯互联网金融服务有限公司旗下的股票先机是一款用大数据分析庄家资金、精选上涨庄股的手机炒股软件。教您学习炒股、怎么炒股、如何炒股。" />
     <title>股票先机-大数据跟庄手机炒股|深圳利讯互联网金融服务有限公司</title>
-    <link rel="stylesheet" type="text/css" href="css/global.css?v=1">
+	<link rel="stylesheet" type="text/css" href="css/global.css?v=1">
 </head>
 <body class="index">
 <div class="container">
@@ -91,57 +91,64 @@
 <div class="hide">
 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255983647'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255983647' type='text/javascript'%3E%3C/script%3E"));</script>
 </div>
-<script type="text/javascript">
-function $(id){
-	return document.getElementById(id);
-}
-//判断是否微信访问
-function isWeiXin(){
-    var ua = window.navigator.userAgent.toLowerCase();
-    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
-        return true;
-    }else{
-        return false;
-    }
-}
+<script>
+	//声明_czc对象:
+	var _czc = _czc || [];
+	//绑定siteid，请用您的siteid替换下方"XXXXXXXX"部分
+	_czc.push(["_setAccount", "1255983647"]);
 
-//下载微信
-function download(type){
-    var isWx = isWeiXin();
-    if(isWx){
-        location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.lixun.gpxj';
-    }else{
-        var u = navigator.userAgent;
-        //var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-        if(u.indexOf('Android') > -1 || u.indexOf('Adr') > -1 || 'android' == type){   //android终端
-            location.href = 'http://www.gupiaoxianji.com/apk/gpxj-ifunbox.apk';
-        }else if(!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/) || 'ios' == type){   //ios终端
-            location.href = 'https://itunes.apple.com/us/app/gu-piao-xian-ji-mo-ni-gen/id1031837178?l=zh&ls=1&mt=8';
-        }else{  //PC 终端
-            //show('layer');
-        }
-    }
-}
+	function $(id){
+		return document.getElementById(id);
+	}
+	//判断是否微信访问
+	function isWeiXin(){
+		var ua = window.navigator.userAgent.toLowerCase();
+		if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
-function hide(id){
-	$(id).className = $(id).className + ' hide';
-}
+	//下载微信
+	function download(type){
+		var isWx = isWeiXin();
+		if(isWx){
+			location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.lixun.gpxj';
+		}else{
+			var u = navigator.userAgent;
+			//var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+			if(u.indexOf('Android') > -1 || u.indexOf('Adr') > -1 || 'android' == type){   //android终端
+				location.href = 'http://www.gupiaoxianji.com/apk/gpxj-ifunbox.apk';
+			}else if(!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/) || 'ios' == type){   //ios终端
+				location.href = 'https://itunes.apple.com/us/app/gu-piao-xian-ji-mo-ni-gen/id1031837178?l=zh&ls=1&mt=8';
+			}else{  //PC 终端
+				//show('layer');
+			}
+		}
+	}
 
-function show(id){
-    var c = $(id).className;
-    if(c.indexOf('hide') > -1){
-        $(id).className = c.replace(/\s+hide/g, '');
-    }
+	function hide(id){
+		$(id).className = $(id).className + ' hide';
+	}
 
-}
+	function show(id){
+		var c = $(id).className;
+		if(c.indexOf('hide') > -1){
+			$(id).className = c.replace(/\s+hide/g, '');
+		}
+
+	}
 
 
-$('btnIphone').onclick = function(){
-    download('ios');
-};
-$('btnAndroid').onclick = function(){
-    download('android');
-};
+	$('btnIphone').onclick = function(){
+		//download('ios');
+		_czc.push(["_trackEvent", '首页', '下载', 'ios']);
+	};
+	$('btnAndroid').onclick = function(){
+		//download('android');
+		_czc.push(["_trackEvent", '首页', '下载', 'android']);
+	};
 
 </script>
 </body>
