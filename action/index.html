@@ -8,15 +8,15 @@
     <meta content="telephone=no" name="format-detection">
     <meta content="email=no" name="format-detection">
     <title>炒股大赛－挑战先机阿尔法狗</title>
-    <link rel="stylesheet" href="css/global.css?v=2"/>
+    <link rel="stylesheet" href="css/global.css?v=3"/>
 </head>
 <body>
 <div class="container">
     <div class="hd">
         <img src="images/hd.jpg" width="100%" alt=""/>
         <div class="tab" id="tab">
-            <a href="javascript:;" class="tab-a on" data-type="month">月度</a>
-            <a href="javascript:;" class="tab-a" data-type="quarter">季度</a>
+            <!--<a href="javascript:;" class="tab-a on" data-type="month">月度</a>-->
+            <a href="javascript:;" class="tab-a on" data-type="quarter">季度</a>
         </div>
     </div>
     <div class="middle">
@@ -37,11 +37,8 @@
             </tbody>
         </table>
     </div>
-    <img class="bd" src="images/bd.jpg" width="100%" alt=""/>
-    <img class="hd1" src="images/hd1.jpg" width="100%" alt=""/>
-    <img src="images/pic1.png" width="100%" alt=""/>
-    <img src="images/pic2.png" width="100%" alt=""/>
-    <img src="images/pic3.png" width="100%" alt=""/>
+    <img src="images/pic1.png?v=1" width="100%" alt=""/>
+    <img src="images/pic2.png?v=1" width="100%" alt=""/>
     <div class="btn-line">
         <a href="http://khmobile.htsec.com/p/BFVQsN" class="btn"></a>
     </div>
@@ -52,15 +49,15 @@
     {{each list as value i}}
     {{if value.is_fund}}
     <tr class="on">
-        <th>{{ i+1 }}</th>
-        <th>{{ value.fund_name }}</th>
-        <th>{{ value.returns.toFixed(2) }}%</th>
+        <td>{{ i+1 }}</td>
+        <td>{{ value.fund_name }}</td>
+        <td>{{ value.returns.toFixed(2) }}%</td>
     </tr>
     {{else}}
     <tr>
-        <th>{{ i+1 }}</th>
-        <th>{{ value.starPhone }}</th>
-        <th>{{ value.returns.toFixed(2) }}%</th>
+        <td>{{ i+1 }}</td>
+        <td>{{ value.starPhone }}</td>
+        <td>{{ value.returns.toFixed(2) }}%</td>
     </tr>
     {{/if}}
     {{/each}}
@@ -73,69 +70,34 @@
 
 
     var index = {
-        cache : {},
         init : function(){
-            this.bindEvent();
-            this.loadData('month');
+            //this.bindEvent();
+            this.loadData();
         },
         bindEvent : function(){
-            var that = this;
 
-            $('#tab a').on('tap', function(){
-                $('#tab a').removeClass('on');
-                $(this).addClass('on');
-
-                var type = $(this).data('type');
-                that.loadData(type);
-            });
-
-            $('#table').on('swiperight', function(e){
-                e.preventDefault();
-                $('#tab a').removeClass('on');
-                $('#tab a').eq(0).addClass('on');
-                var type = $('#tab a').eq(0).data('type');
-                $('#tab .on').data(type);
-                that.loadData(type);
-            });
-
-            $('#table').on('swipeleft', function(e){
-                e.preventDefault();
-                $('#tab a').removeClass('on');
-                $('#tab a').eq(1).addClass('on');
-                var type = $('#tab a').eq(1).data('type');
-                $('#tab .on').data(type);
-                that.loadData(type);
-            });
         },
-        loadData : function(type){
+        loadData : function(){
             var that = this;
-            var url = {
-                month : 'http://app.api.gupiaoxianji.com/ball/month',
-                quarter : 'http://app.api.gupiaoxianji.com/ball/quarter'
-            };
-            if(!that.cache[type]){
-                $.ajax({
-                    type: 'GET',
-                    url: url[type],
-                    dataType : 'json',
-                    success: function(data){
-                        var result = {};
-                        $(data).each(function(i, t){
-                            console.log(t.phone);
-                            var phone = t.phone.toString().substring(0,3) + '****' + t.phone.toString().substring(7);
-                            data[i].starPhone = phone;
-                        })
-                        result.list = data;
-                        that.cache[type] = result;
-                        that.render(result);
-                    },
-                    error: function(xhr, type){
-                        alert('Ajax error!')
-                    }
-                })
-            }else{
-                that.render(that.cache[type]);
-            }
+            var url = 'http://app.api.gupiaoxianji.com/ball/quarter';
+            $.ajax({
+                type: 'GET',
+                url: url,
+                dataType : 'json',
+                success: function(data){
+                    var result = {};
+                    $(data).each(function(i, t){
+                        var phone = t.phone.toString().substring(0,3) + '****' + t.phone.toString().substring(7);
+                        data[i].starPhone = phone;
+                    })
+                    result.list = data;
+                    that.cache = result;
+                    that.render(result);
+                },
+                error: function(xhr, type){
+                    alert('Ajax error!')
+                }
+            })
 
         },
         render : function(result){
