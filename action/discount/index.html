@@ -34,7 +34,7 @@
         var url = 'http://120.25.250.237:12345/';
         var channelid = $.all.getParam('channelid') || 101;
         var coupons = [];
-        var msg = [];
+        var couponNum = 0;
 
         //查看本次活动和渠道可以领取的优惠券
         var couponAvailable = function(){
@@ -61,7 +61,6 @@
                     }else{
                         alert('暂无优惠券');
                     }
-
                 }
             })
         }();
@@ -88,7 +87,10 @@
                 success: function(data){
                     var result = data.result;
                     if(1 == result.status){
-                        msg.push(couponname);
+                        couponNum++;
+                        if(!couponNum){
+                            alert('获取成功！');
+                        }
                     }
                 }
             })
@@ -141,7 +143,7 @@
             phone = phone.replace(/(^\s+)|(\s+$)/g, '');
 
             //判断手机是否正确
-            var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+            var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
             if(!myreg.test(phone))
             {
                 alert('请输入有效的手机号码！');
