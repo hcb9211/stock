@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>免费领取优惠券</title>
+    <link rel="stylesheet" href="css/global.css?v=3"/>
+</head>
+<body>
+<div class="container">
+    <img src="img/hd_bg.png" width="100%" alt=""/>
+    <p class="desc">股票先机给您送优惠券和体验券了!<br>快来领取吧！</p>
+    <div class="form">
+        <div class="form-line">
+            <input class="text" id="phone" required placeholder="请输入您的手机号码" type="text"/>
+        </div>
+        <div class="btn-line">
+            <button type="button" id="btn" class="btn hide">马上领取</button>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Swiper JS -->
+<script src="js/lib/zepto.min.js"></script>
+<script src="js/global.js"></script>
+<script>
+    $(function(){
+        var url = 'http://120.25.250.237:12345/';
+        var channelid = $.all.getParam('channelid') || 101;
+        var coupons = [];
+        var msg = [];
+
+        //查看本次活动和渠道可以领取的优惠券
+        var couponAvailable = function(){
+            var param = {
+                "jsonrpc": "2.0",
+                "method": "Coupon.CouponAvailable",
+                "id": 54321,
+                "params" : {
+                    "channel": channelid, //
+                    "activity": "testmoney"
+                }
+            };
+            $.ajax({
+                url: url,
+                type: "POST",
+                contentType: "application/json",
+                dataType : 'json',
+                data: JSON.stringify(param),
+                success: function(data){
+                    var result = data.result;
+                    if(coupons > 0){
+                        coupons = result.coupons;
+                        $('#btn').removeClass('hide');
+                    }else{
+                        alert('暂无优惠券');
+                    }
+
+                }
+            })
+        }();
+
+        //领取优惠券，如果可以领取多张，都帮他领取
+        var obtainCoupon = function(phone, channelid, couponid, couponname){
+            var param = {
+                "jsonrpc": "2.0",
+                "method": "Coupon.ObtainCoupon",
+                "id": 54321,
+                "params" : {
+                    "phone": phone, //
+                    "channel": channelid,
+                    "activity": "testmoney",
+                    "couponid": couponid
+                }
+            };
+            $.ajax({
+                url: url,
+                type: "POST",
+                contentType: "application/json",
+                dataType : 'json',
+                data: JSON.stringify(param),
+                success: function(data){
+                    var result = data.result;
+                    if(1 == result.status){
+                        msg.push(couponname);
+                    }
+                }
+            })
+        };
+
+        //调试使用，调用删除已经领取的优惠券
+        var deleteCoupon = function(phone, couponid){
+            var param = {
+                "jsonrpc": "2.0",
+                "method": "Coupon.DeleteCoupon",
+                "id": 54321,
+                "params" : {
+                    "phone": phone, //
+                    "couponid":2
+                }
+            };
+            $.ajax({
+                url: url,
+                type: "POST",
+                contentType: "application/json",
+                dataType : 'json',
+                data: JSON.stringify(param),
+                success: function(result){
+                    console.log(result);
+                }
+            })
+        };
+
+        //根据手机号
+        var submitForm = function(phone){
+
+            if(coupons.length > 0){
+                var hasCoupons = false;
+                $.each(coupons, function(key, value){
+                    if(value.productsavailable > 0){
+                        hasCoupons = true;
+                        obtainCoupon(phone, channelid, value.couponid);
+                    }
+                });
+                $('#btn').addClass('hide');
+                if(!hasCoupons){
+                    alert('优惠券已经送完了！');
+                }
+            }
+        }
+
+
+        $('#btn').on('tap', function(e){
+            var phone = $('#phone').val();
+            phone = phone.replace(/(^\s+)|(\s+$)/g, '');
+
+            //判断手机是否正确
+            var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+            if(!myreg.test(phone))
+            {
+                alert('请输入有效的手机号码！');
+                return false;
+            }
+
+            submitForm(phone);
+        })
+
+    });
+</script>
+</body>
+</html>
