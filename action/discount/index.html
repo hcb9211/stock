@@ -12,15 +12,22 @@
 </head>
 <body>
 <div class="container">
-    <img src="img/hd_bg.png" width="100%" alt=""/>
+    <img src="img/hd_bg.png?v=1" width="100%" alt=""/>
     <p class="desc">股票先机给您送优惠券和体验券了!<br>快来领取吧！</p>
     <div class="form">
         <div class="form-line">
-            <input class="text" id="phone" required placeholder="请输入您的手机号码" type="text"/>
+            <input class="text" id="phone" required placeholder="请输入您的手机号码" type="number"/>
         </div>
         <div class="btn-line">
             <button type="button" id="btn" class="btn hide">马上领取</button>
         </div>
+    </div>
+</div>
+
+<div class="layer" id="layer">
+    <div class="layer-main">
+        <div class="layer-line" id="line"></div>
+        <a class="layer-btn" id="btnCancel" href="javascript:;">知道了</a>
     </div>
 </div>
 
@@ -32,11 +39,33 @@
 <script>
     $(function(){
         //var url = 'http://120.25.250.237:12345/';
+        var TAP = 'ontouchstart' in window ? 'tap' : 'click';
         var url = 'http://app.api.gupiaoxianji.com/test';
-        var channelid = $.all.getParam('channelid') || 101;
+        var channelid = parseInt($.all.getParam('channelid')) || 101;
         var activity = $.all.getParam('activity') || 'testmoney';
         var coupons = [];
         var couponNum = 0, getCouponNum = 0;
+
+
+        var ajax = function(param, fn){
+            $.ajax({
+                url: url,
+                type: "POST",
+                contentType: "application/json",
+                dataType : 'json',
+                data: JSON.stringify(param),
+                success: function(data){
+                    fn && fn(data);
+                }
+            })
+        }
+
+        var pop = function(title){
+            if(title){
+                $('#line').html(title);
+                $('#layer').addClass('show');
+            }
+        }
 
         //查看本次活动和渠道可以领取的优惠券
         var couponAvailable = function(){
@@ -49,20 +78,13 @@
                     "activity": activity
                 }
             };
-            $.ajax({
-                url: url,
-                type: "POST",
-                contentType: "application/json",
-                dataType : 'json',
-                data: JSON.stringify(param),
-                success: function(data){
-                    var result = data.result;
-                    if(result.coupons.length > 0){
-                        coupons = result.coupons;
-                        $('#btn').removeClass('hide');
-                    }else{
-                        alert('暂无优惠券');
-                    }
+            ajax(param, function(data){
+                var result = data.result;
+                if(result.coupons.length > 0){
+                    coupons = result.coupons;
+                    $('#btn').removeClass('hide');
+                }else{
+                    pop('暂无优惠券');
                 }
             })
         }();
@@ -80,56 +102,26 @@
                     "couponid": couponid
                 }
             };
-            $.ajax({
-                url: url,
-                type: "POST",
-                contentType: "application/json",
-                dataType : 'json',
-                data: JSON.stringify(param),
-                success: function(data){
-                    var result = data.result;
-                    couponNum++;
-                    if(1 == result.status){
-                        getCouponNum++;
-                    }
-                    if(couponNum == coupons.length){
-                        if(getCouponNum > 0){
-                            alert('获取成功！');
-                        }else{
-                            alert('没有新的优惠券了');
-                        }
-                    }
 
+            ajax(param, function(data){
+                var result = data.result;
+                couponNum++;
+                if(1 == result.status){
+                    getCouponNum++;
                 }
-            })
-        };
-
-        //调试使用，调用删除已经领取的优惠券
-        var deleteCoupon = function(phone, couponid){
-            var param = {
-                "id": 54321,
-                "jsonrpc": "2.0",
-                "method": "DevTool.DeleteCoupon",
-                "params" : {
-                    "phone": phone, //
-                    "couponid": couponid
-                }
-            };
-            $.ajax({
-                url: url,
-                type: "POST",
-                contentType: "application/json",
-                dataType : 'json',
-                data: JSON.stringify(param),
-                success: function(result){
-                    console.log(result);
+                if(couponNum == coupons.length){
+                    if(getCouponNum > 0){
+                        pop('获取成功！');
+                    }else{
+                        pop('没有新的优惠券了');
+                    }
                 }
             })
         };
 
         //根据手机号
         var submitForm = function(phone){
-
+            couponNum = getCouponNum = 0;
             if(coupons.length > 0){
                 var hasCoupons = false;
                 $.each(coupons, function(key, value){
@@ -138,25 +130,30 @@
                     obtainCoupon(phone, couponid);
                 });
                 if(!hasCoupons){
-                    alert('优惠券已经送完了！');
+                    pop('没有新的优惠券了');
                 }
             }
         }
 
 
-        $('#btn').on('tap', function(e){
+        $('#btn').on(TAP, function(e){
             var phone = $('#phone').val();
+            $('#phone').blur();
             phone = phone.replace(/(^\s+)|(\s+$)/g, '');
 
             //判断手机是否正确
             var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
             if(!myreg.test(phone))
             {
-                alert('请输入有效的手机号码！');
+                pop('请输入有效的手机号码！');
                 return false;
             }
 
             submitForm(phone);
+        });
+
+        $('#btnCancel').on(TAP, function(){
+            $('#layer').removeClass('show');
         })
 
     });

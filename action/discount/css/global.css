@@ -45,7 +45,7 @@ html {font-size: 10px;}
 /* rem ]] */
 
 
-body{}
+.container{max-width:600px;margin:0 auto;}
 
 
 .desc{text-align: center;font-size: 1.3rem;line-height:1.8rem;padding-top:0.3rem;color: #b5c2d5;}
@@ -56,9 +56,11 @@ body{}
 .form .btn-line .btn{-webkit-appearance:none;outline:0 none;display:block;text-align: center;width: 100%;height:3.3rem;font-size:1.6rem;color:#fff;border:0 none;background: #ff4342;border-radius: 5px;}
 
 
-
-
-
+.layer{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);z-index:99;}
+.layer-main{position:absolute;left:50%;top:50%;width:27rem;-webkit-transform:translate(-50%, -50%) translateZ(0);transform:translate(-50%, -50%) translateZ(0);background-color:#fff;text-align:center;border-radius:4px;font-size:1.6rem;}
+.layer-line{line-height:3rem;padding:2rem 0;}
+.layer-btn{display:block;height:4.4rem;line-height:4.4rem;border-top:1px solid #e1e1e1;color:#54A3F5;}
+.layer.show{display:block;}
 
 
 
