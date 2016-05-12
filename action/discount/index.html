@@ -31,7 +31,8 @@
 <script src="js/global.js"></script>
 <script>
     $(function(){
-        var url = 'http://120.25.250.237:12345/';
+        //var url = 'http://120.25.250.237:12345/';
+        var url = 'http://debug.gupiaoxianji.com:12345';
         var channelid = $.all.getParam('channelid') || 101;
         var coupons = [];
         var couponNum = 0;
@@ -55,7 +56,7 @@
                 data: JSON.stringify(param),
                 success: function(data){
                     var result = data.result;
-                    if(coupons > 0){
+                    if(result.coupons > 0){
                         coupons = result.coupons;
                         $('#btn').removeClass('hide');
                     }else{
