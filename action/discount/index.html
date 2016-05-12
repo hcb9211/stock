@@ -43,7 +43,7 @@
                 "method": "Coupon.CouponAvailable",
                 "id": 54321,
                 "params" : {
-                    "channel": channelid, //
+                    "channel": channelid,
                     "activity": "testmoney"
                 }
             };
@@ -67,7 +67,7 @@
         }();
 
         //领取优惠券，如果可以领取多张，都帮他领取
-        var obtainCoupon = function(phone, channelid, couponid, couponname){
+        var obtainCoupon = function(phone, couponid, couponname){
             var param = {
                 "jsonrpc": "2.0",
                 "method": "Coupon.ObtainCoupon",
