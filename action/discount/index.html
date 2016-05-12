@@ -32,10 +32,11 @@
 <script>
     $(function(){
         //var url = 'http://120.25.250.237:12345/';
-        var url = 'http://debug.gupiaoxianji.com:12345';
+        var url = 'http://app.api.gupiaoxianji.com/test';
         var channelid = $.all.getParam('channelid') || 101;
+        var activity = $.all.getParam('activity') || 'testmoney';
         var coupons = [];
-        var couponNum = 0;
+        var couponNum = 0, getCouponNum = 0;
 
         //查看本次活动和渠道可以领取的优惠券
         var couponAvailable = function(){
@@ -45,7 +46,7 @@
                 "id": 54321,
                 "params" : {
                     "channel": channelid,
-                    "activity": "testmoney"
+                    "activity": activity
                 }
             };
             $.ajax({
@@ -56,7 +57,7 @@
                 data: JSON.stringify(param),
                 success: function(data){
                     var result = data.result;
-                    if(result.coupons > 0){
+                    if(result.coupons.length > 0){
                         coupons = result.coupons;
                         $('#btn').removeClass('hide');
                     }else{
@@ -67,7 +68,7 @@
         }();
 
         //领取优惠券，如果可以领取多张，都帮他领取
-        var obtainCoupon = function(phone, couponid, couponname){
+        var obtainCoupon = function(phone, couponid){
             var param = {
                 "jsonrpc": "2.0",
                 "method": "Coupon.ObtainCoupon",
@@ -75,7 +76,7 @@
                 "params" : {
                     "phone": phone, //
                     "channel": channelid,
-                    "activity": "testmoney",
+                    "activity": activity,
                     "couponid": couponid
                 }
             };
@@ -87,12 +88,20 @@
                 data: JSON.stringify(param),
                 success: function(data){
                     var result = data.result;
+                    couponNum++;
                     if(1 == result.status){
-                        couponNum++;
-                        if(!couponNum){
-                            alert('获取成功！');
-                        }
+                        getCouponNum++;
                     }
+                    if(couponNum == coupons.length){
+                        if(getCouponNum > 0){
+                            alert('获取成功！');
+                        }else{
+                            alert('没有新的优惠券了');
+                        }
+                    }else{
+                        alert('没有新的优惠券了');
+                    }
+
                 }
             })
         };
@@ -100,12 +109,12 @@
         //调试使用，调用删除已经领取的优惠券
         var deleteCoupon = function(phone, couponid){
             var param = {
-                "jsonrpc": "2.0",
-                "method": "Coupon.DeleteCoupon",
                 "id": 54321,
+                "jsonrpc": "2.0",
+                "method": "DevTool.DeleteCoupon",
                 "params" : {
                     "phone": phone, //
-                    "couponid":2
+                    "couponid": couponid
                 }
             };
             $.ajax({
@@ -128,10 +137,13 @@
                 $.each(coupons, function(key, value){
                     if(value.productsavailable > 0){
                         hasCoupons = true;
-                        obtainCoupon(phone, channelid, value.couponid);
+                        var couponid = value.couponid;
+                        console.log(couponid);
+                        (function(couponid){
+                            obtainCoupon(phone, couponid);
+                        })(couponid);
                     }
                 });
-                $('#btn').addClass('hide');
                 if(!hasCoupons){
                     alert('优惠券已经送完了！');
                 }
