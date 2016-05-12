@@ -98,8 +98,6 @@
                         }else{
                             alert('没有新的优惠券了');
                         }
-                    }else{
-                        alert('没有新的优惠券了');
                     }
 
                 }
@@ -135,14 +133,9 @@
             if(coupons.length > 0){
                 var hasCoupons = false;
                 $.each(coupons, function(key, value){
-                    if(value.productsavailable > 0){
-                        hasCoupons = true;
-                        var couponid = value.couponid;
-                        console.log(couponid);
-                        (function(couponid){
-                            obtainCoupon(phone, couponid);
-                        })(couponid);
-                    }
+                    hasCoupons = true;
+                    var couponid = value.couponid;
+                    obtainCoupon(phone, couponid);
                 });
                 if(!hasCoupons){
                     alert('优惠券已经送完了！');
