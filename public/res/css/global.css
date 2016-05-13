@@ -1,0 +1,125 @@
+article,aside,dialog,figure,footer,header,hgroup,nav,section{display:block;}
+body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,fieldset,legend,label,input,select,textarea,button,th,td,menu,figure,svg,g{margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6,input,textarea,select,button,label{font-size:100%;vertical-align:middle;font-weight:400;}
+ul,dl,ol{list-style:none;}
+img,fieldset{border:0 none;outline:0 none;}
+img{display:inline-block;overflow:hidden;vertical-align:middle;}
+em{font-style:normal;}
+strong{font-weight:normal;}
+table{border-collapse:collapse;border-spacing:0;}
+
+input,textarea,select{-webkit-appearance:none;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);outline:none;}
+input{border:0 none;}
+textarea{word-wrap:break-word;resize:none;}  /* word-wrap for opera, resize for webkit */
+select{border: 0 none;}
+select::-ms-expand{display:none;}
+::-ms-check {display:none;}
+::-webkit-inner-spin-button {-webkit-appearance:none;}
+::-webkit-outer-spin-button {-webkit-appearance:none;}
+input[type="number"]{-webkit-user-select:text;}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none!important;margin:0;}
+button,input[type="button"]{cursor:pointer;border:0 none;}
+
+a,button,input,img{-webkit-touch-callout:none;}  /* 1.ios 长按时不触发系统的菜单 2.禁止长按时下载图片 */
+/* 去除android4.0以下 a/button/input标签被点击时产生的边框 因为边框引起了不少bug */
+a,button,input{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+/* Android4.0下不识别选择器-webkit-transform-3d 使用它可做Android4.0下版本兼容 */
+@media all and (-webkit-transform-3d){
+    /* android4.0+ ios4+ 恢复按钮被点击时产生的效果 */
+    a,button,input{-webkit-tap-highlight-color:rgba(130,130,130,0);}
+}
+a{outline:0 none;text-decoration:none;color:#40BCE8;cursor:pointer;-webkit-touch-callout:none;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);}
+a,a:visited{color:transparent;}
+
+html,body{height:100%;}
+body{-webkit-user-select:none;-webkit-text-size-adjust:none;font-family:Helvetica;background: #F0EFF4;color: #202020;}
+.hide{display: none!important;}
+.line-though{text-decoration: line-through;}
+.red{color: #ff4342!important;}
+.green{color: #1aad0a!important;;}
+.gray{color: #96989c!important;;}
+.bg-pink{background: #e1007a!important;;}
+.bg-blue{background: #5071ff!important;;}
+
+
+/* rem [[ */
+html {font-size: 10px;}
+@media (min-width: 320px) and (max-width: 359px) and (min-height: 503px){html {font-size: 10px;}}
+@media (min-width: 360px) and (max-width: 413px) and (min-height: 566px){html {font-size: 11px;}}
+@media (min-width: 414px) and (max-width: 479px) and (min-height: 651px){html {font-size: 12px;}}
+@media (min-width: 448px) and (max-width: 539px) and (min-height: 705px){html {font-size: 14px;}}
+@media (min-width: 540px) and (max-width: 719px) and (min-height: 849px){html {font-size: 16px;}}
+@media (min-width: 720px) and (max-width: 1079px) and (min-height: 1132px){html {font-size: 22px;}}
+@media (min-width: 1080px) and (min-height: 1698px) {html {font-size: 33px;}}
+/* rem ]] */
+
+/*  线  */
+.border-top, .border-bottom{position:relative;}
+.border-top:before, .border-bottom:after{content:'';position:absolute;left:0;right:0;height:0;-webkit-transform:scaleY(.5);-webkit-transform-origin:0 0;z-index:2;}
+.border-top:before{top:0;border-top:1px solid #c8c7cc;}
+.border-bottom:after{bottom:0;border-bottom:1px solid #c8c7cc;}
+/*  针对dpr为1.5的设备兼容缩放  */
+@media all and (-webkit-device-pixel-ratio:1.5){
+    .border-top:before, .border-bottom:after{-webkit-transform:scaleY(1);}
+}
+.btn{display: block;height: 3.5rem;line-height: 3.5rem;font-size: 1.8rem;text-align: center;border-radius: 3px;}
+.btn-red{color: #fff!important;background: #ff4342;}
+
+/* 盒模型（兼容ios 4+、android 2.3+、winphone8+）
+------------------------------ */
+/*  定义为盒模型  */
+.flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+
+/*  盒模型垂直布局  */
+.flex-v{
+    -webkit-box-orient:vertical;
+    -webkit-flex-direction:column;
+    -ms-flex-direction:column;
+    flex-direction:column;
+}
+
+/*  子元素自动占据剩余的空间  */
+.flex-1{
+    -webkit-box-flex:1;
+    -webkit-flex:1;
+    -ms-flex:1;
+    flex:1;
+}
+
+/*  水平布局下的子元素-两端对齐  */
+.flex-h-justify{
+    -webkit-box-pack:justify;
+    -webkit-justify-content:space-between;
+    -ms-flex-pack:justify;
+    justify-content:space-between;
+}
+
+/*  水平布局下的子元素-水平居中  */
+.flex-h-hcenter{
+    -webkit-box-pack:center;
+    -webkit-justify-content:center;
+    -ms-flex-pack:center;
+    justify-content:center;
+}
+
+/*  水平布局下的子元素-垂直居中  */
+.flex-h-vcenter{
+    -webkit-box-align:center;
+    -webkit-align-items:center;
+    -ms-flex-align:center;
+    align-items:center;
+}
+
+
+.arrow-down, .arrow-up{display: inline-block;width:2.2rem;height: 2.2rem;background: url("../img/global/arrow_down.png") no-repeat;background-size: 100%;-webkit-transform-origin:50%;transform-origin:50%;}
+.arrow-up{-webkit-transform:rotate(50%);transform:rotate(50%);}
+.arrow-right{display:inline-block;width:0.7rem;height: 1rem;background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAUCAMAAABh7EcdAAAAS1BMVEUAAADAxczAxczAxczAxczAxczAxczAxczAxczAxczAxczAxczAxczAxczAxczAxczAxczAxczAxczAxczAxczAxczAxczAxczAxcwBktQJAAAAGHRSTlMAxNfORjAeDfPx5+S1qpqOjXtuXlMiFgdHgpLuAAAAUUlEQVQY02XQRw7AQAgEwWWjcw79/5f6OLLgVhIChnCnK6gMDulJsIltgvmVF7Am7hCreMJQxNzTZbGMsIo1gjmp003RBrddl7mrlcin/X/iAxGFBZNUZ6aPAAAAAElFTkSuQmCC") no-repeat;background-size: auto  100%; }
+
+
+
+
+
+
+
+
+
