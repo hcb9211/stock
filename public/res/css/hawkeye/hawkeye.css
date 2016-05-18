@@ -1,0 +1,29 @@
+.index{}
+.index .noSubscribe{position: relative;}
+.index .noSubscribe .btn-line{position: absolute;left: 0;right: 0;bottom: 0;padding: 0.9rem 1rem 0;height: 6rem;}
+
+.index .subscribe .section{background: #fff;padding: 0 1rem;margin-bottom: 1.5rem;}
+.index .subscribe .logo{margin:0 auto;padding-top: 0.5rem;height: 13.3rem;width: 21.8rem;margin-bottom: 1.7rem;background: url("../../img/hawkeye/yybb_icon_y.png") center bottom no-repeat;background-size: auto 13.3rem;text-align: center;color: #fff;font-size: 1.3rem;}
+.index .subscribe .logo-date{padding-top: 9.3rem;}
+.index .subscribe .line{line-height: 2.3rem;padding-bottom: 1.8rem;}
+.index .subscribe .line-title{font-size: 1.3rem;color: #202020;padding-right: 0.4rem;}
+.index .subscribe .line-title1{font-size: 1.3rem;color: #202020;padding-left: 0.9rem;}
+.index .subscribe .signal{display: inline-block;font-size: 1.2rem;color: #adb3bf;border-radius: 2px;padding: 0 0.5rem;margin: 0 0.4rem;height: 2.3rem;line-height: 2.3rem;background: #f0f4fa;vertical-align: top;}
+.index .subscribe .bg-red{color: #fff;}
+.index .subscribe .per{padding-left: 1rem;font-size: 2.5rem;}
+.index .subscribe .per .unit{font-size: 1.6rem;color: #f43030;}
+.index .probability-desc{line-height: 1.5rem;height: 1.5rem;font-size: 0.9rem;color: #96989c;padding-bottom: 2.1rem;}
+.index .probability-w{width: 40%}
+.index .probability-desc .ico{display: inline-block;vertical-align:top;width: 1.5rem;height: 1.5rem;vertical-align: top;margin-right: 0.8rem;}
+.index .probability-list{text-align: center;font-size: 0.9rem;line-height: 3.8rem;padding-bottom: 0.4rem;}
+.index .probability-li .ico{height: 4rem;}
+.index .subscribe .section2 .title{font-size: 1.5rem;line-height: 2rem;color: #202020;}
+.index .subscribe .section2 .subtitle{font-size: 1.3rem;line-height: 2rem;color: #202020;}
+.index .subscribe .plate-li{float: left;width: 30%;height: 4.5rem;margin: 0 1.5%;color: #fff;font-size: 1.3rem;text-align: center;line-height: 4.5rem;}
+.index .subscribe .section2 .desc{font-size: 1.1rem;}
+
+.index .subscribe .section3{padding: 1.5rem 1rem;}
+.index .subscribe .section3 .section-wrap{padding: 1rem 2rem;line-height: 2.5rem;border: 3px solid #5070ff;font-size: 1.5rem;color: #5070ff;}
+
+
+
