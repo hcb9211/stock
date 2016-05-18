@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta content="" name="pgv" />
+    <title>先机基金</title>
+    <link rel="stylesheet" type="text/css" href="../res/css/libs/xcharts.min.css">
+    <link rel="stylesheet" type="text/css" href="../res/css/global.css">
+    <link rel="stylesheet" type="text/css" href="../res/css/fund/fund.css">
+<body class="index">
+    <div class="container">
+        <a href="javascript:;"><img width="100%" src="../res/img/fund/index_action.png" alt=""/></a>
+        <div class="list">
+            <ul>
+                <li class="li border-bottom border-top">
+                    <div class="li-hd flex">
+                        <div class="li-item flex-1">
+                            <div class="li-title">先机智能动力基金</div>
+                            <div class="li-desc">创建于2016.02.08</div>
+                        </div>
+                        <div class="li-item flex-1">
+                            <div class="li-title">收益率<span class="red">42.98%</span></div>
+                            <div class="li-desc">同期上证指数<span class="red">42.98%</span></div>
+                        </div>
+                        <div class="arrow-down"></div>
+                    </div>
+                    <div class="li-bd border-top">
+                        <div class="tab-line">
+                            <div class="tab">
+                                <a class="tab-a" href="javascript:;">从创立</a><a class="tab-a" href="javascript:;">一年</a><a class="tab-a" href="javascript:;">三个月</a>
+                            </div>
+                        </div>
+                        <div class="colors">
+                            <div class="colors-desc"><span class="colors-color bg-pink"></span>先机量化进取基金</div>
+                            <div class="colors-desc"><span class="colors-color bg-blue"></span>上证指数</div>
+                        </div>
+                        <p class="p">基金操作风格稳健，以风控第一为基础，根据趋势适时调整策略积极参与市场行情，重点关注成长型个股。</p>
+
+
+                        <div class="btn-line">
+                            <a class="btn btn-red" href="detail.html">查看详情</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="li border-bottom border-top on">
+                    <div class="li-hd flex">
+                        <div class="li-item flex-1">
+                            <div class="li-title">先机智能动力基金</div>
+                            <div class="li-desc">创建于2016.02.08</div>
+                        </div>
+                        <div class="li-item flex-1">
+                            <div class="li-title">收益率<span class="red">42.98%</span></div>
+                            <div class="li-desc">同期上证指数<span class="red">42.98%</span></div>
+                        </div>
+                        <div class="arrow-down"></div>
+                    </div>
+                    <div class="li-bd border-top">
+                        <div class="tab-line">
+                            <div class="tab">
+                                <a class="tab-a on" href="javascript:;">从创立</a><a class="tab-a" href="javascript:;">一年</a><a class="tab-a" href="javascript:;">三个月</a>
+                            </div>
+                        </div>
+                        <div class="colors">
+                            <div class="colors-desc"><span class="colors-color bg-pink"></span>先机量化进取基金</div>
+                            <div class="colors-desc"><span class="colors-color bg-blue"></span>上证指数</div>
+                        </div>
+                        <p class="p">基金操作风格稳健，以风控第一为基础，根据趋势适时调整策略积极参与市场行情，重点关注成长型个股。</p>
+
+                        <figure style="height: 18rem;width: 100%;" id="myChart"></figure>
+
+                        <div class="btn-line">
+                            <a class="btn btn-red" href="detail.html">查看详情</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!--　　弹窗——提示订阅　[[　-->
+        <div class="poplayer poplayer-subscribe"><!--需要展示加class "show"-->
+            <div class="popmain">
+                <div class="popline">
+                    订阅先机基金<br>赢取超额收益
+                </div>
+                <div class="popdesc gray">您的基金订阅服务已经到期，请重新订阅！</div>
+                <a class="btn btn-red" href="pay.html">立即订阅</a>
+            </div>
+        </div>
+        <!--　　弹窗——提示订阅　]]　-->
+
+        <!--　　弹窗——未绑定账号　[[　-->
+        <div class="poplayer poplayer-bindaccount"><!--需要展示加class "show"-->
+            <div class="popmain">
+                <a class="btn btn-red" href="detail.html">绑定账号</a>
+            </div>
+        </div>
+        <!--　　弹窗——未绑定账号　]]　-->
+
+    </div>
+
+    <script src="../res/js/libs/jquery-1.11.3.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="../res/js/libs/xcharts.min.js"></script>
+    <script>
+        var tt = document.createElement('div'),
+                leftOffset = -32,
+                topOffset = -32;
+        tt.className = 'ex-tooltip';
+        document.body.appendChild(tt);
+
+        var data = {
+            "xScale": "time",
+            "yScale": "linear",
+            "main": [
+                {
+                    "className": ".pizza",
+                    "data": [
+                        {
+                            "x": "2012-11-05",
+                            "y": 6
+                        },
+                        {
+                            "x": "2012-11-06",
+                            "y": 6
+                        },
+                        {
+                            "x": "2012-11-07",
+                            "y": 8
+                        },
+                        {
+                            "x": "2012-11-08",
+                            "y": 3
+                        },
+                        {
+                            "x": "2012-11-09",
+                            "y": 4
+                        },
+                        {
+                            "x": "2012-11-10",
+                            "y": 9
+                        },
+                        {
+                            "x": "2012-11-11",
+                            "y": 6
+                        }
+                    ]
+                }
+            ]
+        };
+        var opts = {
+            "dataFormatX": function (x) { return d3.time.format('%Y-%m-%d').parse(x); },
+            "tickFormatX": function (x) { return d3.time.format('%A')(x); },
+            "mouseover": function (d, i) {
+                var pos = $(this).offset();
+                $(tt).text(d3.time.format('%A')(d.x) + ': ' + d.y)
+                        .css({top: topOffset + pos.top, left: pos.left + leftOffset})
+                        .show();
+            },
+            "mouseout": function (x) {
+                $(tt).hide();
+            }
+        };
+        var myChart = new xChart('line-dotted', data, '#myChart', opts);
+    </script>
+</body>
+</html>

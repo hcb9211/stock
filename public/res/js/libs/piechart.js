@@ -1,36 +1,36 @@
-window.onload = function(){
-	new Pie({
-        selector: '#canvas_fan',  //canvas容器（可选，若不设置，则默认容器为 '#canvas'）
-        lineWidth: 1,  //文本指向线的宽度（可选，若不设置，则默认值为1）
-        autoline: 20,  //文本指向线的长度（可选，若不设置，则默认值为20）
-        radio: 0.50,  //设置文本中心位置（可选，若不设置，则默认值为0.60）
-        per: 0.90,  //设置比例至少为多少时在扇形里面显示文本（可选，若不设置，则默认值为0.10）
-        textAttr: {
-            fontSize: 12,  //文本字号（可选，若不设置，则默认值为12）
-            fontWeight: 'normal',  //文本是否加粗（可选，若不设置，则默认值为' normal'）
-            fontFamily: 'Microsoft YaHei'  //文本字体（可选，若不设置，则默认值为 'Helvetica Neue'）
-        },
-        padding: 10,  //canvas内边距（可选，若不设置，则默认值为10）
-		radius: 80,  //半径（可选，若不设置，则程序将根据canvas尺寸和padding值自行计算半径）
-		animateEnble: true,  //是否开启360度动态画图（可选，若不设置，则默认值为 true）
-		type: 1  //1是点击放大效果，2是点击移动效果（可选，若不设置，则默认值为1）
-    }).draw([{
-    	data:32000, //该项数值（必填）
-    	ratio:0.32,  //该项比例（可选，若不设置，则程序将通过data自行计算比例）
-    	fillStyle:'#2196F3', //该项扇形填充色（必填）
-    	label:'东方财富' //该项名称（可选）
-    },{
-    	data:8000,
-    	ratio:0.08,
-    	fillStyle:'#9B58B5',
-    	label:'天玑基金'
-    },{
-    	data:60000,
-    	ratio:0.60,
-    	fillStyle:'#FF8806',
-    	label:'现金'
-    }]);
-}
+//window.onload = function(){
+//	new Pie({
+//        selector: '#canvas_fan',  //canvas容器（可选，若不设置，则默认容器为 '#canvas'）
+//        lineWidth: 1,  //文本指向线的宽度（可选，若不设置，则默认值为1）
+//        autoline: 20,  //文本指向线的长度（可选，若不设置，则默认值为20）
+//        radio: 0.50,  //设置文本中心位置（可选，若不设置，则默认值为0.60）
+//        per: 0.90,  //设置比例至少为多少时在扇形里面显示文本（可选，若不设置，则默认值为0.10）
+//        textAttr: {
+//            fontSize: 12,  //文本字号（可选，若不设置，则默认值为12）
+//            fontWeight: 'normal',  //文本是否加粗（可选，若不设置，则默认值为' normal'）
+//            fontFamily: 'Microsoft YaHei'  //文本字体（可选，若不设置，则默认值为 'Helvetica Neue'）
+//        },
+//        padding: 10,  //canvas内边距（可选，若不设置，则默认值为10）
+//		radius: 80,  //半径（可选，若不设置，则程序将根据canvas尺寸和padding值自行计算半径）
+//		animateEnble: true,  //是否开启360度动态画图（可选，若不设置，则默认值为 true）
+//		type: 1  //1是点击放大效果，2是点击移动效果（可选，若不设置，则默认值为1）
+//    }).draw([{
+//    	data:32000, //该项数值（必填）
+//    	ratio:0.32,  //该项比例（可选，若不设置，则程序将通过data自行计算比例）
+//    	fillStyle:'#2196F3', //该项扇形填充色（必填）
+//    	label:'东方财富' //该项名称（可选）
+//    },{
+//    	data:8000,
+//    	ratio:0.08,
+//    	fillStyle:'#9B58B5',
+//    	label:'天玑基金'
+//    },{
+//    	data:60000,
+//    	ratio:0.60,
+//    	fillStyle:'#FF8806',
+//    	label:'现金'
+//    }]);
+//}
 
 	function getFontHeightInPixels(fontFamily, fontSize, fontWeight) {  //计算当前字体字号情况下的lineheight
 
@@ -94,7 +94,7 @@ window.onload = function(){
 			type: 1
 		};
 
-		$.extend(true, this.options, opt);
+		$.extend(this.options, opt);
 
 		this.init();
 	}
@@ -105,7 +105,6 @@ window.onload = function(){
 			
 			var width = w ? w : this.width,
 				height = h ? h : this.height;
-
 			this.context.clearRect(x || 0, y || 0, width, height);
 		},
 
