@@ -13,7 +13,7 @@
 .index .subscribe .per{padding-left: 1rem;font-size: 2.5rem;}
 .index .subscribe .per .unit{font-size: 1.6rem;color: #f43030;}
 .index .probability-desc{line-height: 1.5rem;height: 1.5rem;font-size: 0.9rem;color: #96989c;padding-bottom: 2.1rem;}
-.index .probability-w{width: 40%}
+.index .probability-w{width: 40%;text-align: center;}
 .index .probability-desc .ico{display: inline-block;vertical-align:top;width: 1.5rem;height: 1.5rem;vertical-align: top;margin-right: 0.8rem;}
 .index .probability-list{text-align: center;font-size: 0.9rem;line-height: 3.8rem;padding-bottom: 0.4rem;}
 .index .probability-li .ico{height: 4rem;}
