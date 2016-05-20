@@ -95,6 +95,7 @@ define(function(require, exports, module) {
             };
             $.Func.ajax(param, function(data){
                 var result = data.result;
+                result.fundid = fundid;
                 //console.log(result);
                 var html = template('operating-template', result);
                 $('#operatingList').html(html);

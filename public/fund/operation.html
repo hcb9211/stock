@@ -14,78 +14,90 @@
 <body class="operation">
     <div class="container">
         <div class="list">
-            <ul>
-                <li class="li border-top border-bottom">
-                    <div class="li-hd flex flex-h-justify">
-                        <div class="date">2016年4月21日</div>
-                        <div><span class="gray">13:00:25</span><span class="arrow-down"></span></div>
-                    </div>
-                    <div class="table">
-                        <table width="100%" cellpadding="0">
-                            <tbody>
-                            <tr>
-                                <td class="col1 border-top">
-                                    <span class="ico-buy">买</span>
-                                    <div>汇洁股份</div>
-                                    <div class="gray">63元</div>
-                                </td>
-                                <td class="col2 border-top">
-                                    成交价：40.16
-                                </td>
-                                <td class="col3 border-top">1800股</td>
-                            </tr>
-                            <tr>
-                                <td class="col1 border-top">
-                                    <span class="ico-sale">买</span>
-                                    <div>汇洁股份</div>
-                                    <div class="gray">63元</div>
-                                </td>
-                                <td class="col2 border-top">
-                                    成交价：40.16
-                                </td>
-                                <td class="col3 border-top">1800股</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </li>
-                <li class="li border-top border-bottom on">
-                    <div class="li-hd flex flex-h-justify">
-                        <div class="date">2016年4月21日</div>
-                        <div><span class="gray">13:00:25</span><span class="arrow-down"></span></div>
-                    </div>
-                    <div class="table">
-                        <table width="100%" cellpadding="0">
-                            <tbody>
-                            <tr>
-                                <td class="col1 border-top">
-                                    <span class="ico-buy">买</span>
-                                    <div>汇洁股份</div>
-                                    <div class="gray">63元</div>
-                                </td>
-                                <td class="col2 border-top">
-                                    成交价：40.16
-                                </td>
-                                <td class="col3 border-top">1800股</td>
-                            </tr>
-                            <tr>
-                                <td class="col1 border-top">
-                                    <span class="ico-sale">买</span>
-                                    <div>汇洁股份</div>
-                                    <div class="gray">63元</div>
-                                </td>
-                                <td class="col2 border-top">
-                                    成交价：40.16
-                                </td>
-                                <td class="col3 border-top">1800股</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </li>
+            <ul id="list">
+                <!--<li class="li border-top border-bottom">-->
+                    <!--<div class="li-hd flex flex-h-justify">-->
+                        <!--<div class="date">2016年4月21日</div>-->
+                        <!--<div><span class="arrow-down"></span></div>-->
+                    <!--</div>-->
+                    <!--<div class="table">-->
+                        <!--<table width="100%" cellpadding="0">-->
+                            <!--<tbody>-->
+                            <!--<tr>-->
+                                <!--<td class="col1 border-top">-->
+                                    <!--<span class="ico-buy">买</span>-->
+                                    <!--<div>汇洁股份</div>-->
+                                    <!--<div class="gray">63元</div>-->
+                                <!--</td>-->
+                                <!--<td class="col2 border-top">-->
+                                    <!--成交价：40.16-->
+                                <!--</td>-->
+                                <!--<td class="col3 border-top">1800股</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td class="col1 border-top">-->
+                                    <!--<span class="ico-sale">买</span>-->
+                                    <!--<div>汇洁股份</div>-->
+                                    <!--<div class="gray">63元</div>-->
+                                <!--</td>-->
+                                <!--<td class="col2 border-top">-->
+                                    <!--成交价：40.16-->
+                                <!--</td>-->
+                                <!--<td class="col3 border-top">1800股</td>-->
+                            <!--</tr>-->
+                            <!--</tbody>-->
+                        <!--</table>-->
+                    <!--</div>-->
+                <!--</li>-->
             </ul>
         </div>
     </div>
+
+    <script id="day-template" type="text/html">
+        {{each data as day i}}
+        <li class="li border-top border-bottom">
+            <a href="javascript:;" class="li-hd flex flex-h-justify js-tap" data-handler="showTable">
+                <div class="date">{{ dateFormate(day.updatetime) }}</div>
+                <div><span class="arrow-down"></span></div>
+            </a>
+            <div class="table">
+                <table width="100%" cellpadding="0">
+                    <tbody>
+                    {{ each day.data as stock j }}
+                    <tr>
+                        <td class="col1 border-top">
+                            {{ if stock.operate }}
+                            <span class="ico-buy">买</span>
+                            {{ else }}
+                            <span class="ico-sale">卖</span>
+                            {{ /if }}
+                            <div class="title">{{ stock.stockname }}<span class="gray">{{ stock.stockid.substring(0, 6) }}</span></div>
+                            <div class="gray">{{ stock.updatetime }}</div>
+                        </td>
+                        <td class="col2 border-top">
+                            <div>成交价：</div>
+                            <div>{{ stock.old_price.toFixed(2) }}</div>
+                        </td>
+                        <td class="col3 border-top">{{ stock.volume }}股</td>
+                    </tr>
+                    {{ /each }}
+                    </tbody>
+                </table>
+            </div>
+        </li>
+        {{/each}}
+    </script>
+
+    <script type="text/javascript" src="../res/js/libs/zepto.min.js"></script>
+    <script type="text/javascript" src="../res/js/libs/piechart.js"></script>
+    <script type="text/javascript" src="../res/js/libs/template.js"></script>
+    <script type="text/javascript" src="../res/js/libs/sea.js"></script>
+    <script type="text/javascript">
+        // 加载多个模块，在加载完成时，执行回调
+        seajs.use(['../res/js/global', '../res/js/fund/operation'], function(global, operation) {
+            operation.init();
+        });
+    </script>
 
 </body>
 </html>

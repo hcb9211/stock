@@ -45,7 +45,7 @@ define(function(require, exports, module) {
         init : function(){
             this.renderPage();
             this.bindEvent();
-            $.Func.showLayer('#popBindAccount');
+            //$.Func.showLayer('#popBindAccount');
         }
     }
 

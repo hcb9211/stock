@@ -17,7 +17,7 @@
 .index .li-bd .colors-color{float: left;width: 1.9rem;height: 0.4rem;margin: 0.4rem 0 0 -2.4rem;}
 .index .li-bd .p{background: #f0f4fa;color: #747bba;line-height: 1.8rem;font-size: 1.1rem;padding: 0.7rem 1.2rem;}
 .index .btn-line{padding-top: 2rem;}
-.index .on .li-bd{display: block;height: 24rem;padding: 1.9rem 1rem;}
+.index .on .li-bd{display: block;height: 32rem;padding: 1.9rem 1rem;}
 .index .on .arrow-down{-webkit-transform: rotate(180deg) translateY(50%);transform: rotate(180deg) translateY(50%);}
 
 .poplayer{display: none;position: fixed;left: 0;top: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.4);z-index: 99;}
@@ -65,9 +65,9 @@
 ------------------------------ */
 .operation .list{}
 .operation .li{margin-bottom: 1.5rem;background: #fff;}
-.operation .li-hd{line-height: 4rem;height: 4rem;padding: 0 1rem;font-size: 1.5rem;}
+.operation .li-hd{line-height: 4rem;height: 4rem;padding: 0 1rem;font-size: 1.5rem;color: #202020;}
 .operation .li-hd .gray{font-size: 1.3rem;}
-.operation .li-hd .arrow-down{display: none;width: 1.4rem;height: 1.4rem;margin-left:0.8rem;vertical-align: -0.2rem;}
+.operation .li-hd .arrow-down{display:inline-block;width: 1.4rem;height: 1.4rem;margin-left:0.8rem;vertical-align: -0.2rem;-webkit-transition:all 1s;transition:all 1s;-webkit-transform-origin:50% 50%;transform-origin:50% 50%;}
 .operation .table{display:none;font-size: 1.5rem;}
 .operation .table .col1{padding-left: 4.1rem;}
 .operation .table .gray{font-size: 1.1rem;padding-top: 0.4rem;}
@@ -76,7 +76,7 @@
 .operation .ico-buy{background: #FD4344;}
 .operation .ico-sale{background: #1AAC0B;}
 .operation .li.on .table{display: block;}
-.operation .li.on .arrow-down{display: inline-block;}
+.operation .li.on .arrow-down{-webkit-transform:rotate(180deg);transform:rotate(180deg);}
 
 
 /* 订阅基金(pay.html)
