@@ -1,0 +1,75 @@
+body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,form,label,input,select,textarea,button,th,td{margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6,input,textarea,select,button,label{font-size:100%;vertical-align:middle;font-weight:normal;}
+ul,dl,ol{list-style:none;}
+img,fieldset,input{border:0 none;outline:0 none}
+img{display:inline-block;overflow:hidden;vertical-align:top;}
+html,body{min-height:100%;}
+body{min-width:240px;color:#202020;background-color:#ffffff;-webkit-user-select:none;-webkit-text-size-adjust:none;font-family:\534E\6587\7EC6\9ED1,"Helvetica Neue", Helvetica, STHeiTi, sans-serif;}
+a{outline:0 none;text-decoration:none;cursor:pointer;color:#54A3F5;-webkit-touch-callout:none;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);}
+::-webkit-input-placeholder{color:#202020;}
+::-webkit-inner-spin-button {-webkit-appearance:none;}
+::-webkit-outer-spin-button {-webkit-appearance:none;}
+input{-webkit-tap-highlight-color:rgba(0, 0, 0, 0);}
+.highlight{color:#fb7322 !important;}
+.container{height:100%;}
+.hide{display:none!important;}
+.flex{
+    display:-webkit-box;/* android 2.1-3.0, ios 3.2-4.3 */
+    display:-webkit-flex;/* Chrome 21+ */
+    display:-ms-flexbox;/* WP IE 10 */
+    display:flex;/* android 4.4 */
+}
+.flex-pack-justify{
+    /* 水平布局下的子元素 2端对齐 */
+    -webkit-box-pack: justify;/* android 2.1-3.0, ios 3.2-4.3 */
+    -webkit-justify-content: space-between;/* Chrome 21+ */
+    -ms-flex-pack: justify;/* WP IE 10 */
+    justify-content: space-between;/* android 4.4 */
+}
+.flex-1{
+    -webkit-box-flex:1;/* android 2.1-3.0, ios 3.2-4.3 */
+    -webkit-flex:1;/* Chrome 21+ */
+    -ms-flex:1;/* WP IE 10 */
+    flex:1;/* android 4.4 */
+}
+
+/* rem [[ */
+html {font-size: 10px;}
+@media (min-width: 320px) and (max-width: 359px) and (min-height: 503px){html {font-size: 10px;}}
+@media (min-width: 360px) and (max-width: 413px) and (min-height: 566px){html {font-size: 11px;}}
+@media (min-width: 414px) and (max-width: 479px) and (min-height: 651px){html {font-size: 12px;}}
+@media (min-width: 448px) and (max-width: 539px) and (min-height: 705px){html {font-size: 14px;}}
+@media (min-width: 540px) and (max-width: 719px) and (min-height: 849px){html {font-size: 16px;}}
+@media (min-width: 720px) and (max-width: 1079px) and (min-height: 1132px){html {font-size: 22px;}}
+@media (min-width: 1080px) and (min-height: 1698px) {html {font-size: 33px;}}
+/* rem ]] */
+
+
+.container{max-width:600px;margin:0 auto;}
+
+.layer{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);z-index:99;}
+.layer-main{position:absolute;left:50%;top:50%;width:27rem;-webkit-transform:translate(-50%, -50%) translateZ(0);transform:translate(-50%, -50%) translateZ(0);background-color:#fff;text-align:center;border-radius:4px;font-size:1.6rem;}
+.layer-line{line-height:3rem;padding:2rem 0;}
+.layer-btn{display:block;height:4.4rem;line-height:4.4rem;border-top:1px solid #e1e1e1;color:#54A3F5;}
+.layer.show{display:block;}
+
+
+.form-line{position: relative;}
+.text{position: absolute;left: 0;top:0;width: 100%;bottom: 0;font-size: 2rem;text-align: center;-webkit-appearance: none;background: none;}
+.btn-line{position: relative;}
+.btn{position: absolute;top: 1rem;left: 50%;margin-left:-10.85rem;width: 21.7rem;height: 5.5rem;background: url("../images/btn.png") no-repeat;background-size: 100%;border: 0 none;-webkit-appearance: none;outline: 0 none;}
+
+
+.result{background: #ffc34b;}
+.result .list{padding: 1.2rem 2rem;}
+.result .list-li{border-top: 0.5rem solid #ff5d5d;background: #fff;border-radius: 6px;margin-bottom: 1.1rem;color: #ff5d5d;}
+.result .list-inn{border: 1px solid #dbdee1;border-top: 0 none;height: 8rem;border-radius: 0 0 3px 3px;}
+.result .left{float: left;width: 32%;line-height: 8rem;text-align: center;font-size: 3rem;border-right: 1px dashed #d4d7db;}
+.result .left .unit{font-size: 1.2rem;}
+.result .right{float: left;padding-left: 1.8rem;}
+.result .right .title{font-size: 1.8rem;font-weight: normal;padding-top: 1rem;}
+.result .right .subtitle{font-size: 1.2rem;line-height: 2rem;}
+.result .right .desc{font-size: 1rem;color: #b5b8bf;padding-top: 0.5rem;}
+
+
+

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>免费领取优惠券</title>
+    <link rel="stylesheet" href="css/global.css"/>
+</head>
+<body>
+<div class="container index" id="index">
+    <img src="images/coupon_01.png" width="100%" alt=""/>
+    <img src="images/coupon_02.png" width="100%" alt=""/>
+    <div class="form-line">
+        <img src="images/coupon_03.png" width="100%" alt=""/>
+        <input class="text" maxlength="11" required pattern="[0-9]*" id="phone"  placeholder="请输入领取的手机号码" type="number" />
+    </div>
+    <div class="btn-line">
+        <img src="images/coupon_04.png" width="100%" alt=""/>
+        <button type="button" id="btn" class="btn hide"></button>
+    </div>
+</div>
+
+<div class="container result hide" id="result">
+    <img src="images/result_01.png" width="100%" alt=""/>
+    <img src="images/result_02.png" width="100%" alt=""/>
+    <div class="list">
+        <ul id="coupons">
+            <li class="list-li">
+                <div class="list-inn">
+                    <div class="left"><span class="num">7</span><span class="unit">天</span></div>
+                    <div class="right">
+                        <h3 class="title">体验券</h3>
+                        <p class="subtitle">有效日期至2016-08-01</p>
+                        <p class="desc">(仅限智能动力基金信息服务)</p>
+                    </div>
+                </div>
+            </li>
+            <li class="list-li">
+                <div class="list-inn">
+                    <div class="left"><span class="num">7</span><span class="unit">天</span></div>
+                    <div class="right">
+                        <h3 class="title">体验券</h3>
+                        <p class="subtitle">有效日期至2016-08-01</p>
+                        <p class="desc">(仅限智能动力基金信息服务)</p>
+                    </div>
+                </div>
+            </li>
+            <li class="list-li">
+                <div class="list-inn">
+                    <div class="left"><span class="num">7</span><span class="unit">天</span></div>
+                    <div class="right">
+                        <h3 class="title">体验券</h3>
+                        <p class="subtitle">有效日期至2016-08-01</p>
+                        <p class="desc">(仅限智能动力基金信息服务)</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="layer" id="layer">
+    <div class="layer-main">
+        <div class="layer-line" id="line"></div>
+        <a class="layer-btn" id="btnCancel" href="javascript:;">知道了</a>
+    </div>
+</div>
+
+
+<script id="li-template" type="text/html">
+    {{each data as li i}}
+    <li class="list-li">
+        <div class="list-inn">
+            <div class="left">
+                {{ if li.type == 2 }}
+                <span class="num">{{ li.daysadd }}</span><span class="unit">天</span>
+                {{ else if li.type == 1}}
+                <span class="num">{{ fenToyuan(li.amountsub) }}<</span><span class="unit">元</span>
+                {{ /if }}
+            </div>
+            <div class="right">
+                <h3 class="title">{{ li.couponname }}</h3>
+                <p class="subtitle">有效日期至{{ dateFormate(li.expireddate) }}</p>
+                <p class="desc">({{ li.coupondesc }})</p>
+            </div>
+        </div>
+    </li>
+    {{ /each }}
+</script>
+
+
+<script src="js/lib/zepto.min.js"></script>
+<script src="js/lib/template.js"></script>
+<script src="js/global.js"></script>
+<script>
+    $(function(){
+
+        template.helper('fenToyuan', function (money) {
+            var amount = Math.ceil(money/100);
+            return amount;
+        });
+
+
+        template.helper('dateFormate', function (createdate) {
+            return createdate.substring(0, 10);
+        });
+
+        //var url = 'http://120.25.250.237:12345/';
+        var TAP = 'ontouchstart' in window ? 'tap' : 'click';
+        var channelid = parseInt($.all.getParam('channelid')) || 100;
+        var activity = $.all.getParam('activity') || 'TYTEST';
+        var coupons = [];
+        var couponNum = 0, getCouponNum = [];
+
+
+        //查看本次活动和渠道可以领取的优惠券
+        var couponAvailable = function(){
+            var param = {
+                "jsonrpc": "2.0",
+                "method": "Coupon.CouponAvailable",
+                "id": 54321,
+                "params" : {
+                    "channel": channelid,
+                    "activity": activity
+                }
+            };
+            $.all.ajax(param, function(data){
+                var result = data.result;
+                if(result.coupons){
+                    coupons = result.coupons;
+                    $('#btn').removeClass('hide');
+                }else{
+                    $.all.pop('暂无优惠券');
+                }
+            })
+        }();
+
+        //领取优惠券，如果可以领取多张，都帮他领取
+        var obtainCoupon = function(phone, couponid){
+            var param = {
+                "jsonrpc": "2.0",
+                "method": "Coupon.ObtainCoupon",
+                "id": 54321,
+                "params" : {
+                    "phone": phone,
+                    "channel": channelid,
+                    "activity": activity,
+                    "couponid": couponid
+                }
+            };
+
+            $.all.ajax(param, function(data){
+                var result = data.result;
+                couponNum++;
+                if(1 == result.status){
+                    getCouponNum.push(couponid.toString());
+                }
+                if(couponNum == coupons.length){
+                    if(getCouponNum.length > 0){
+                        $('#index').addClass('hide');
+                        $('#result').removeClass('hide');
+                        var getCoupons = {
+                            data: []
+                        };
+                        $.each(coupons, function(key, value){
+                            if(~$.inArray(value.couponid.toString(), getCouponNum)){
+                                getCoupons.data.push(value);
+                            }
+                        });
+                        var html = template('li-template', getCoupons);
+                        $('#coupons').html(html);
+                    }else{
+                        $.all.pop('没有新的优惠券了');
+                    }
+                }
+            })
+        };
+
+        //根据手机号
+        var submitForm = function(phone){
+            couponNum = 0;
+            getCouponNum = [];
+            if(coupons.length > 0){
+                var hasCoupons = false;
+                $.each(coupons, function(key, value){
+                    hasCoupons = true;
+                    var couponid = value.couponid;
+                    obtainCoupon(phone, couponid);
+                });
+                if(!hasCoupons){
+                    $.all.pop('没有新的优惠券了');
+                }
+            }
+        };
+        $('#phone').keyup(function(e){
+            var phone = $('#phone').val();
+            if(phone.length > 11){
+                $('#phone').val(phone.substring(0, 11));
+                return false;
+            }
+        });
+
+
+        $('#btn').on(TAP, function(e){
+            var phone = $('#phone').val();
+            $('#phone').blur();
+            phone = phone.replace(/(^\s+)|(\s+$)/g, '');
+
+            //判断手机是否正确
+            var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+            if(!myreg.test(phone))
+            {
+                $.all.pop('请输入有效的手机号码！');
+                return false;
+            }
+
+            submitForm(phone);
+        });
+
+        $('#btnCancel').on(TAP, function(){
+            $('#layer').removeClass('show');
+        })
+
+    });
+</script>
+
+</body>
+</html>
