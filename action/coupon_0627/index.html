@@ -205,6 +205,20 @@
             }
         });
 
+        $('#phone').focus(function(){
+            var phone = $('#phone').val();
+            if(!phone){
+                $('#phone').attr('placeholder', '');
+            }
+        });
+
+        $('#phone').blur(function(){
+            var phone = $('#phone').val();
+            if(!phone){
+                $('#phone').attr('placeholder', '请输入领取的手机号码');
+            }
+        });
+
 
         $('#btn').on(TAP, function(e){
             var phone = $('#phone').val();
