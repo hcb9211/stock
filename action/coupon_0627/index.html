@@ -175,7 +175,7 @@
                         var html = template('li-template', getCoupons);
                         $('#coupons').html(html);
                     }else{
-                        $.all.pop('没有新的优惠券了');
+                        $.all.pop('您已经领取过优惠券啦～去股票先机APP查看使用吧～');
                     }
                 }
             })
@@ -193,7 +193,7 @@
                     obtainCoupon(phone, couponid);
                 });
                 if(!hasCoupons){
-                    $.all.pop('没有新的优惠券了');
+                    $.all.pop('您已经领取过优惠券啦～去股票先机APP查看使用吧～');
                 }
             }
         };
@@ -215,7 +215,7 @@
             var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
             if(!myreg.test(phone))
             {
-                $.all.pop('请输入有效的手机号码！');
+                $.all.pop('需要填写手机号才能领取哦～');
                 return false;
             }
 
