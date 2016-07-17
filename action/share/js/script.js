@@ -25,7 +25,19 @@ $.all = {
               console.log(res);
           }
       });
+  },
+  checkPhone: function(phone){
+      phone = phone.replace(/(^\s+)|(\s+$)/g, '');
+
+      //判断手机是否正确
+      var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+      if(!myreg.test(phone))
+      {
+          return false;
+      }
+      return phone;
   }
+
 };
 
 var Index = {
@@ -80,6 +92,8 @@ var Index = {
   },
   init: function(){
     var userid = $.all.getParm('userid');
+        userid = $.all.checkPhone(userid);
+
     if(userid){
       this.getUserInfo(userid);
     }
