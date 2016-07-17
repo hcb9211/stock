@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title></title>
+    <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <div class="container" id="container">
+    </div>
+
+    <script id="body-template" type="text/html">
+      <div class="avatar">
+        <img src="{{ imageUrl }}" width="48" height="48" alt="" />
+        <p class="desc">{{ nickname }}测试测试测试测试测试测试</p>
+      </div>
+      <div class="main">
+        <h1 class="main-hd">好友{{ Nickname }}邀请你加入股票先机！</h1>
+        <div class="main-bd">
+          <p class="main-bd-p">一键下载APP<br>海量涨停股票等你来跟</p>
+          <h2 class="subtitle">邀请码</h2>
+          <p class="invitecode" id="inviteCode">...</p>
+        </div>
+      </div>
+      <div class="btnline">
+        <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.lixun.gpxj" class="btn-yellow" id="download">下载股票先机APP</a>
+        <p>注册时记得填写邀请码哦！</p>
+      </div>
+    </script>
+
+    <script src="js/libs/zepto.min.js" charset="utf-8"></script>
+    <script src="js/libs/template.js" charset="utf-8"></script>
+    <script src="js/script.js" charset="utf-8"></script>
+  </body>
+</html>
