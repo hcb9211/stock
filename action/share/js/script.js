@@ -47,7 +47,7 @@ var Index = {
       document.title='股票先机，跟庄炒股跑赢大盘';
       var $body = $('body');
 
-      var $iframe = $('<iframe src="/favicon.ico">注册就送60%收益率的组合跟投服务。</iframe>');
+      var $iframe = $('<iframe src="/favicon.ico"></iframe>');
       $iframe.on('load',function() {
           setTimeout(function() {
               $iframe.off('load').remove();
@@ -103,3 +103,94 @@ var Index = {
 
 Index.init();
 ;
+
+//  config接口注入权限验证配置
+wx.config({
+    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: 'wxe031013412e9afdb', // 必填，公众号的唯一标识
+    timestamp:1465445458, // 必填，生成签名的时间戳
+    nonceStr: 'i3WvKMSFPB1UtYOmnurMh4597f4SQIvf', // 必填，生成签名的随机串
+    signature: 'f4d90daf4b3bca3078ab155816175ba34c443a7b',// 必填，签名，见附录1
+    jsApiList: [
+        onMenuShareTimeline,
+        onMenuShareAppMessage,
+        onMenuShareQQ,
+        onMenuShareWeibo,
+        onMenuShareQZone,
+        startRecord,
+        stopRecord,
+        onVoiceRecordEnd,
+        playVoice,
+        pauseVoice,
+        stopVoice,
+        onVoicePlayEnd,
+        uploadVoice,
+        downloadVoice,
+        chooseImage,
+        previewImage,
+        uploadImage,
+        downloadImage,
+        translateVoice,
+        getNetworkType,
+        openLocation,
+        getLocation,
+        hideOptionMenu,
+        showOptionMenu,
+        hideMenuItems,
+        showMenuItems,
+        hideAllNonBaseMenuItem,
+        showAllNonBaseMenuItem,
+        closeWindow,
+        scanQRCode,
+        chooseWXPay,
+        openProductSpecificView,
+        addCard,
+        chooseCard,
+        openCard
+    ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+});
+//  获取“分享给朋友”按钮点击状态及自定义分享内容接口
+wx.onMenuShareAppMessage({
+    title: '股票先机，跟庄炒股跑赢大盘', // 分享标题
+    desc: '注册就送60%收益率的组合跟投服务。', // 分享描述
+    link: 'http://res.gupiaoxianji.com/testTmp/share/index.html?userid=13826595952', // 分享链接
+    imgUrl: 'http://wx.gupiaoxianji.com/gzh/nxbtestdev/web/res/img/global/logo.png', // 分享图标
+    type: '', // 分享类型,music、video或link，不填默认为link
+    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+    success: function () {
+        // 用户确认分享后执行的回调函数
+    },
+    cancel: function () {
+        // 用户取消分享后执行的回调函数
+    }
+});
+//  获取“分享到QQ”按钮点击状态及自定义分享内容接口
+wx.onMenuShareQQ({
+    title: '股票先机，跟庄炒股跑赢大盘', // 分享标题
+    desc: '注册就送60%收益率的组合跟投服务。', // 分享描述
+    link: 'http://res.gupiaoxianji.com/testTmp/share/index.html?userid=13826595952', // 分享链接
+    imgUrl: 'http://wx.gupiaoxianji.com/gzh/nxbtestdev/web/res/img/global/logo.png', // 分享图标
+    type: '', // 分享类型,music、video或link，不填默认为link
+    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+    success: function () {
+        // 用户确认分享后执行的回调函数
+    },
+    cancel: function () {
+        // 用户取消分享后执行的回调函数
+    }
+});
+//  获取“分享到QQ空间”按钮点击状态及自定义分享内容接口
+wx.onMenuShareQZone({
+    title: '股票先机，跟庄炒股跑赢大盘', // 分享标题
+    desc: '注册就送60%收益率的组合跟投服务。', // 分享描述
+    link: 'http://res.gupiaoxianji.com/testTmp/share/index.html?userid=13826595952', // 分享链接
+    imgUrl: 'http://wx.gupiaoxianji.com/gzh/nxbtestdev/web/res/img/global/logo.png', // 分享图标
+    type: '', // 分享类型,music、video或link，不填默认为link
+    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+    success: function () {
+        // 用户确认分享后执行的回调函数
+    },
+    cancel: function () {
+        // 用户取消分享后执行的回调函数
+    }
+});
