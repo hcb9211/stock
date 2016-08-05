@@ -43,10 +43,11 @@ $.all = {
 var Index = {
   //刷新微信顶部title。方便转发
   setWXTitle: function(nickname){
-      document.title = '好友' + nickname + '邀请你加入股票先机！';
+      // document.title = '好友' + nickname + '邀请你加入股票先机！';
+      document.title='股票先机，跟庄炒股跑赢大盘';
       var $body = $('body');
 
-      var $iframe = $('<iframe src="/favicon.ico"></iframe>');
+      var $iframe = $('<iframe src="/favicon.ico">注册就送60%收益率的组合跟投服务。</iframe>');
       $iframe.on('load',function() {
           setTimeout(function() {
               $iframe.off('load').remove();
