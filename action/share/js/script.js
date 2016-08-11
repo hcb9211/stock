@@ -27,8 +27,7 @@ $.all = {
       });
   },
   checkPhone: function(phone){
-      phone = phone.replace(/(^\s+)|(\s+$)/g, '');
-
+      phone = phone.replace( /(^\s+)|(\s+$)/g, " " );
       //判断手机是否正确
       var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
       if(!myreg.test(phone))
@@ -102,7 +101,6 @@ var Index = {
 }
 
 Index.init();
-;
 
 //  config接口注入权限验证配置
 wx.config({
@@ -112,41 +110,41 @@ wx.config({
     nonceStr: 'i3WvKMSFPB1UtYOmnurMh4597f4SQIvf', // 必填，生成签名的随机串
     signature: 'f4d90daf4b3bca3078ab155816175ba34c443a7b',// 必填，签名，见附录1
     jsApiList: [
-        onMenuShareTimeline,
-        onMenuShareAppMessage,
-        onMenuShareQQ,
-        onMenuShareWeibo,
-        onMenuShareQZone,
-        startRecord,
-        stopRecord,
-        onVoiceRecordEnd,
-        playVoice,
-        pauseVoice,
-        stopVoice,
-        onVoicePlayEnd,
-        uploadVoice,
-        downloadVoice,
-        chooseImage,
-        previewImage,
-        uploadImage,
-        downloadImage,
-        translateVoice,
-        getNetworkType,
-        openLocation,
-        getLocation,
-        hideOptionMenu,
-        showOptionMenu,
-        hideMenuItems,
-        showMenuItems,
-        hideAllNonBaseMenuItem,
-        showAllNonBaseMenuItem,
-        closeWindow,
-        scanQRCode,
-        chooseWXPay,
-        openProductSpecificView,
-        addCard,
-        chooseCard,
-        openCard
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo',
+        'onMenuShareQZone',
+        'startRecord',
+        'stopRecord',
+        'onVoiceRecordEnd',
+        'playVoice',
+        'pauseVoice',
+        'stopVoice',
+        'onVoicePlayEnd',
+        'uploadVoice',
+        'downloadVoice',
+        'chooseImage',
+        'previewImage',
+        'uploadImage',
+        'downloadImage',
+        'translateVoice',
+        'getNetworkType',
+        'openLocation',
+        'getLocation',
+        'hideOptionMenu',
+        'showOptionMenu',
+        'hideMenuItems',
+        'showMenuItems',
+        'hideAllNonBaseMenuItem',
+        'showAllNonBaseMenuItem',
+        'closeWindow',
+        'scanQRCode',
+        'chooseWXPay',
+        'openProductSpecificView',
+        'addCard',
+        'chooseCard',
+        'openCard'
     ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 });
 //  获取“分享给朋友”按钮点击状态及自定义分享内容接口
