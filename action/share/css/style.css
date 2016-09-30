@@ -53,8 +53,23 @@ body{text-align: center;background: #edf0f5;color: #97989c;font-size: 1.2rem;}
 .main-hd{line-height: 2rem;padding:0.7rem 0;background: #ff4342;color: #fff;font-size: 1.4rem;border-radius: 3px 3px 0 0;}
 .main-bd{background: #fff;border: 1px solid #dddee3;font-size: 1.4rem;line-height: 2.1rem;padding: 1.6rem 0 2rem;}
 .main-bd .subtitle{color: #fd4441;font-weight: bold;font-size: 1.7rem;line-height: 2.4rem;padding-top: 1.3rem;}
-.main-bd .invitecode{color: #202020;font-size: 1.7rem;line-height: 2.4rem;}
+.main-bd .invitecode{color: #202020;font-size: 2rem;line-height: 2.4rem;border:0;user-select: element;margin:0 auto;width:10rem;height:2.4rem;display:block;text-align: center;font-weight:bold}
 
 .btnline{padding: 2rem 0 0;}
 .btnline .btn-yellow{display: block;height: 3.6rem;line-height: 3.6rem;text-align: center;color: #fff;background: #fdb21b;font-size: 1.5rem;border-radius: 1.8rem;}
 .btnline p{line-height: 3rem;}
+.btn {
+    width: 60%;
+    height: 4rem;
+    background-color: #ff4342;
+    -webkit-appearance:none;
+    border-radius: 8rem;
+    margin: 1rem auto;
+    text-align: center;
+    font-size: 1.4rem;
+    color: white;
+    cursor: pointer;
+    display: block;
+    padding:0 1rem 0 1rem;
+    box-sizing:border-box;
+}
